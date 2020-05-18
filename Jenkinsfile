@@ -5,6 +5,6 @@ stage('SCM Checkout'){
    stage('Compile-Package'){
 	   // Build using maven
 	    def mvnHome = tool name: 'maven-3', type: 'maven'
-	   sh "${mvnHome}/bin/mvn
+	   sh "${mvnHome}/bin/mvn "
    }
 }
