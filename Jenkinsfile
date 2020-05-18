@@ -1,6 +1,6 @@
 node{
 stage('SCM Checkout'){ 
-	url: 'https://github.com/javahometech/my-app'  
+	url: 'https://github.com/vindhyachalboss/my-app'  
    }  
    stage('Compile-Package'){
 	   // Build using maven
