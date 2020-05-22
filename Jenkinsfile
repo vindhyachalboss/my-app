@@ -7,9 +7,11 @@ stage('SCM Checkout'){
 	    def mvnHome = tool name: 'maven-3', type: 'maven'
 	   sh "${mvnHome}/bin/mvn package "
    }
-  stage('Deploy to Tomcat'){
+ stage('Deploy to Tomcat'){
       
-      sh "scp -i /home/ec2-user/tomcat.pem  **/target/*.war ec2-user@13.232.63.219:/usr/share/tomcat8/webapps"
-    
+      sshagent(['tomcat-dev']) {
+         sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@13.232.63.219:/usr/share/tomcat8/webapps'
+      }
    }
+
 }
