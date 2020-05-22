@@ -1,4 +1,8 @@
 node{
+	parameters { 
+         string(name: 'tomcat_dev', defaultValue: '13.232.63.219', description: 'Staging Server')
+         
+    } 
 stage('SCM Checkout'){ 
 	git 'https://github.com/vindhyachalboss/my-app'  
    }  
@@ -9,9 +13,7 @@ stage('SCM Checkout'){
    }
  stage('Deploy to Tomcat'){
       
-      sshagent(['tomcat-dev']) {
-         sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@13.232.63.219:/usr/share/tomcat8/webapps'
-      }
+     sh 'scp -i /home/ec2-user/tomcat.pem  **/target/*.war ec2-user@${params.tomcat_dev}:/usr/share/tomcat8/webapps'
    }
 
 }
