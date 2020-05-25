@@ -11,7 +11,7 @@ stage('SCM Checkout'){
 stage('Deploy to Tomcat'){
       
       sshagent(['a6d59768-f54d-40cb-990c-8e3cf31fc258']) {
-         sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.32.91:/usr/share/tomcat8/webapps'
+         sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@13.232.63.219:/usr/share/tomcat8/webapps'
       }
    }
 	
